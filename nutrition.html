@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nutrition - Svasthya Saathi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fafafa;
+            color: #222;
+        }
+
+        /* Header */
+        .header {
+            background: #d8a3cb;
+            color: #ffffff;
+            padding: 13px 24px 11px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .logo {
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header .logo:before {
+            content: "🛡️";
+            font-size: 19px;
+            margin-right: 7px;
+        }
+
+        .header .lang-user {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            font-size: 15px;
+        }
+
+        .header .lang-user span:last-child {
+            font-size: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            display: flex;
+            border-bottom: 1.5px solid #eee;
+            justify-content: center;
+            padding: 0 0 0 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-link {
+            flex: 1;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: border 0.2s, color 0.2s;
+            font-size: 17px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: none;
+        }
+
+        .nav-link.active {
+            color: #d8a3cb;
+            border-bottom: 3px solid #d8a3cb;
+            background: #fff;
+        }
+
+        .nav-link span {
+            font-size: 23px;
+            margin-bottom: 2px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: #fff;
+            border-bottom: 1.5px solid #fffefe;
+            margin-bottom: 0;
+            margin-top: 0;
+            padding-left: 0;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            font-size: 17px;
+            background: none;
+            transition: border 0.2s, color 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .tab.active {
+            color: #d8a3cb;
+            border-bottom: 3px solid #d8a3cb;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 38px;
+            margin-bottom: 22px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border-radius: 7px;
+            border: 1px solid #e2e2e2;
+            margin-bottom: 30px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+            margin-bottom: 28px;
+            padding: 28px 24px 20px 24px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #d8a3cb;
+            margin-bottom: 16px;
+        }
+
+        .card>div {
+            margin-bottom: 16px;
+        }
+
+        .card b {
+            color: #222;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .card i {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .card ul {
+            margin: 8px 0 8px 18px;
+            padding: 0;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .card li {
+            margin-bottom: 3px;
+        }
+
+        .download-bar {
+            background: #f5e1f0;
+            border-radius: 7px;
+            padding: 12px 0;
+            text-align: center;
+            color: #a35b8f;
+            font-weight: 500;
+            font-size: 15px;
+            margin-top: 18px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .download-bar:hover {
+            background: #d8a3cb;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .card {
+                padding: 18px 10px 14px 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 3px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            .card {
+                padding: 12px 5px 10px 5px;
+            }
+
+            .tabs,
+            .navbar {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <span class="logo">Svasthya Saathi</span>
+        <span class="lang-user">
+            <span>🌐 EN</span>
+            <span>👤</span>
+        </span>
+    </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="home.html" class="nav-link"><span>🏠</span>Home</a>
+        <a href="assessments.html" class="nav-link"><span>≡</span>Assessments</a>
+        <a href="patients.html" class="nav-link"><span>👥</span>Patients</a>
+        <a href="resources.html" class="nav-link active"><span>📄</span>Resources</a>
+    </div>
+    <!-- Tabs -->
+    <div class="tabs">
+        <a href="medicalGuide.html" class="tab">Medical Guidelines</a>
+        <a href="schemes.html" class="tab">Healthcare Schemes</a>
+        <a href="nutrition.html" class="tab active">Nutrition</a>
+    </div>
+    <div class="container">
+        <h1>Resources</h1>
+        <input class="search-bar" type="text" placeholder="Search resources...">
+        <!-- Nutrition During Pregnancy -->
+        <div class="card">
+            <h2>Nutrition During Pregnancy</h2>
+            <div>
+                <b>Iron-rich Foods</b>
+                <div><i>Examples</i>: Spinach, lentils, beans, jaggery (gud), iron-fortified flour</div>
+                <div><b>Benefits</b>: Prevents anemia, supports fetal development</div>
+            </div>
+            <div>
+                <b>Calcium-rich Foods</b>
+                <div><i>Examples</i>: Milk, curd, ragi, sesame seeds, small fish with bones</div>
+                <div><b>Benefits</b>: Supports bone development in the fetus</div>
+            </div>
+            <div>
+                <b>Protein Sources</b>
+                <div><i>Examples</i>: Pulses, milk, eggs, nuts and seeds</div>
+                <div><b>Benefits</b>: Essential for fetal growth and maternal tissue</div>
+            </div>
+            <div>
+                <b>Folate-rich Foods</b>
+                <div><i>Examples</i>: Green leafy vegetables, citrus fruits, legumes</div>
+                <div><b>Benefits</b>: Prevents neural tube defects, supports cell division</div>
+            </div>
+        </div>
+        <!-- Child Nutrition -->
+        <div class="card">
+            <h2>Child Nutrition (0-5 years)</h2>
+            <div>
+                <b>First 6 months</b>
+                <div><i>Examples</i>: Exclusive breastfeeding</div>
+                <div><b>Benefits</b>: Complete nutrition, immunity support</div>
+            </div>
+            <div>
+                <b>6-12 months</b>
+                <div><i>Examples</i>: Breast milk + soft foods (mashed dal-rice, khichdi, mashed fruits)</div>
+                <div><b>Benefits</b>: Complementary nutrition, introducing variety</div>
+            </div>
+            <div>
+                <b>1-3 years</b>
+                <div><i>Examples</i>: Family foods, milk, eggs, fruits, vegetables, grains</div>
+                <div><b>Benefits</b>: Supports rapid growth and brain development</div>
+            </div>
+            <div>
+                <b>3-5 years</b>
+                <div><i>Examples</i>: Balanced diet with all food groups; limited processed foods</div>
+                <div><b>Benefits</b>: Energy for activity, cognitive development</div>
+            </div>
+        </div>
+        <!-- Local Food Alternatives -->
+        <div class="card">
+            <h2>Local Food Alternatives</h2>
+            <div>Affordable, locally available nutritious foods</div>
+            <div>
+                <b>Iron-rich alternatives:</b>
+                <ul>
+                    <li>Amaranth leaves (chaulai/chauli) instead of spinach</li>
+                    <li>Jaggery (gud) instead of sugar</li>
+                    <li>Garden cress seeds (halim) for iron supplementation</li>
+                    <li>Curry leaves added to dishes</li>
+                </ul>
+            </div>
+            <div>
+                <b>Protein alternatives:</b>
+                <ul>
+                    <li>Mixed pulses (dals) when meat is unavailable</li>
+                    <li>Sattu (roasted gram flour) as protein supplement</li>
+                    <li>Small dried fish for complete protein</li>
+                    <li>Sprouted grains and legumes</li>
+                </ul>
+            </div>
+            <div>
+                <b>Calcium alternatives:</b>
+                <ul>
+                    <li>Ragi (finger millet) for non-dairy calcium</li>
+                    <li>Green leafy vegetables</li>
+                    <li>Sesame seeds (til) added to dishes</li>
+                    <li>Small fish consumed with bones</li>
+                </ul>
+            </div>
+            <div class="download-bar">
+                <span>&#8681;</span> Download Nutrition Chart
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
