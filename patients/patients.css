@@ -1,0 +1,197 @@
+/* Main styling */
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    background-color: #E53888;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    
+}
+
+
+.nav-link {
+    color: #000 !important;
+    margin-right: 1rem;
+    
+}
+/* Navbar styling */
+.nav-tabs .nav-link {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #E53888;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #e9ecef;
+    border-bottom: 2px solid #E53888;
+}
+
+/* Patient table container */
+.patient-table-container {
+    min-height: 300px;
+}
+
+/* Add patient button styling - with fix for blue click state */
+.btn-primary {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+/* This fixes the blue active state when clicking buttons */
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #E53888 !important;
+    border-color: #E53888 !important;
+    box-shadow: 0 0 0 0.2rem rgba(229, 56, 136, 0.25) !important;
+}
+
+/* Remove outline focus styles */
+.btn:focus,
+.btn.focus,
+.btn-primary:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Override Bootstrap focus-visible and active focus styles */
+.btn-primary:focus-visible,
+.btn-primary:active:focus {
+    box-shadow: 0 0 0 0.25rem rgba(229, 56, 136, 0.5) !important;
+}
+
+/* Reset the tap highlight color for mobile */
+.btn {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Footer styling */
+.bg-pink {
+    background-color: #E53888 !important;
+}
+
+/* Tab styling */
+#patientTabs .nav-link {
+    color: #495057;
+}
+
+#patientTabs .nav-link.active {
+    color: #E53888;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+/* Action buttons in tables */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Empty state styling */
+.text-secondary {
+    color: #adb5bd !important;
+}
+/* Main styling */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #E53888;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #000 !important;
+    margin-right: 1rem;
+}
+
+/* Patient table container */
+.patient-table-container {
+    min-height: 300px;
+}
+
+/* Add patient button styling - with fix for blue click state */
+.btn-primary {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+/* This fixes the blue active state when clicking buttons */
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #E53888 !important;
+    border-color: #E53888 !important;
+    box-shadow: 0 0 0 0.2rem rgba(229, 56, 136, 0.25) !important;
+}
+
+/* Remove outline focus styles */
+.btn:focus,
+.btn.focus,
+.btn-primary:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Override Bootstrap focus-visible and active focus styles */
+.btn-primary:focus-visible,
+.btn-primary:active:focus {
+    box-shadow: 0 0 0 0.25rem rgba(229, 56, 136, 0.5) !important;
+}
+
+/* Reset the tap highlight color for mobile */
+.btn {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Footer styling */
+.bg-pink {
+    background-color: #E53888 !important;
+}
+
+/* Tab styling */
+#patientTabs .nav-link {
+    color: #495057;
+}
+
+#patientTabs .nav-link.active {
+    color: #E53888;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+/* Action buttons in tables */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Empty state styling */
+.text-secondary {
+    color: #adb5bd !important;
+}
+

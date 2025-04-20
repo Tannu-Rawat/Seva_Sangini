@@ -1,0 +1,81 @@
+body {
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: #E53888;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #000 !important;
+    margin-right: 1rem;
+}
+
+.dashboard-section {
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.ai-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #E53888;
+    color: white;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ai-button:hover {
+    background-color: #ff1493;
+}
+.nav-tabs .nav-link {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #E53888;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #e9ecef;
+    border-bottom: 2px solid #E53888;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background-color: #E53888;
+}
