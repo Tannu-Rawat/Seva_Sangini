@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Svasthya Saathi - Patients</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="patients.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="p-3 mb-3 border-bottom navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between w-100">
+
+                <!-- Left Side: Logo + Title -->
+                <div class="d-flex align-items-center">
+                    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                        <img src="../images_folder/logo.png" alt="Logo" width="60" height="60" class="me-2">
+                        <span class="fs-4 fw-bold" style="color: white;">Seva Sangini</span>
+                    </a>
+                </div>
+
+                <!-- Right Side: Translate + Profile -->
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Translate Button -->
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-translate" viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                            <path
+                                d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                        </svg>
+                    </button>
+
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../images_folder/human.png" alt="mdo" width="40" height="40"
+                                class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <nav class="nav nav-tabs bg-white shadow-sm d-flex text-center">
+        <a class="nav-link flex-fill text-dark fw-semibold " href="index.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707z" />
+                    <path
+                        d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018" />
+                </svg></span> Home
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold " href="assessments.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-bullseye" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12" />
+                    <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8" />
+                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg></span> Tasks
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold active" href="patients.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                </svg></span> Patients
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold" href="nutrition.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-book-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+                </svg></span> Resources
+        </a>
+    </nav>
+
+    <!-- Main Content: Patients Section -->
+    <div class="container mt-4 mb-5">
+        <!-- Header with Add New Patient Button -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Patients</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+                Add New Patient
+            </button>
+        </div>
+    
+        <!-- Patient Category Tabs -->
+        <ul class="nav nav-tabs mb-0" id="patientTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-patients"
+                    type="button" role="tab" aria-selected="true">All Patients</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pregnancy-tab" data-bs-toggle="tab" data-bs-target="#pregnancy" type="button"
+                    role="tab" aria-selected="false">Pregnancy</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="child-tab" data-bs-toggle="tab" data-bs-target="#child-health" type="button"
+                    role="tab" aria-selected="false">Child Health</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="high-risk-tab" data-bs-toggle="tab" data-bs-target="#high-risk" type="button"
+                    role="tab" aria-selected="false">High Risk</button>
+            </li>
+        </ul>
+    
+        <!-- Tab Content -->
+        <div class="tab-content p-3 border border-top-0 rounded-bottom bg-white" id="patientTabContent">
+            <!-- All Patients Tab -->
+            <div class="tab-pane fade show active" id="all-patients" role="tabpanel">
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                            class="bi bi-people text-secondary" viewBox="0 0 16 16">
+                            <path
+                                d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 3.4a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1v9.6l-3.3-1.3a.75.75 0 0 0-.6 0z" />
+                            <path
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg>
+                    </div>
+                    <h5>No patients found</h5>
+                    <p class="text-muted">Start by adding your first patient</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                        Add New Patient
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Pregnancy Tab -->
+            <div class="tab-pane fade" id="pregnancy" role="tabpanel">
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                            class="bi bi-person-hearts text-secondary" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z" />
+                        </svg>
+                    </div>
+                    <h5>No pregnancy patients found</h5>
+                    <p class="text-muted">Add a pregnant patient to see records here</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                        Add New Patient
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Child Health Tab -->
+            <div class="tab-pane fade" id="child-health" role="tabpanel">
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                            class="bi bi-balloon-heart text-secondary" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063.045.041.089.084.132.129.043-.045.087-.088.132-.129 3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419.488.208 0 .371-.258.437-.579.06-.298.071-.852.087-1.518h.737c.016.666.027 1.22.087 1.518.066.321.229.579.437.579.258 0 .365-.218.42-.488.016-.088.029-.18.037-.29l-.008.017a.25.25 0 1 1-.448-.224l.235-.468Z" />
+                        </svg>
+                    </div>
+                    <h5>No child patients found</h5>
+                    <p class="text-muted">Add a child patient to see records here</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                        Add New Patient
+                    </button>
+                </div>
+            </div>
+    
+            <!-- High Risk Tab -->
+            <div class="tab-pane fade" id="high-risk" role="tabpanel">
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                            class="bi bi-exclamation-triangle text-secondary" viewBox="0 0 16 16">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                        </svg>
+                    </div>
+                    <h5>No high-risk patients found</h5>
+                    <p class="text-muted">High-risk patients will appear here</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                        Add New Patient
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--footer-->
+    <footer class="bg-pink text-center text-white py-3">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="list-inline-item"><a href="#" style="color: white; text-decoration: none; ">Home</a></li>
+                <li class="list-inline-item"><a href="#" style="color: white; text-decoration: none;">About</a></li>
+                <li class="list-inline-item"><a href="#" style="color: white; text-decoration: none;">FAQs</a></li>
+                <li class="list-inline-item"><a href="#" style="color: white; text-decoration: none;">Connect</a></li>
+            </ul>
+            <img src="../images_folder/logo.png" alt="Logo" width="60" height="60" class="me-2">
+            <p class="mb-0">© 2025 Seva Sangini</p>
+        </div>
+    </footer>
+
+
+    
+
+
+
+
+    <!-- Scripts -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "../index.html";
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "../index.html";
+        }
+    </script>
+
+</body>
+
+</html>
