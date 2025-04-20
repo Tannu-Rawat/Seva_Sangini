@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svasthya Saathi - Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .login-container h3 {
+            margin-bottom: 25px;
+            color: #555;
+            font-weight: normal;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #ee9ca7;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ee9ca7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d1708f;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #ee9ca7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d1708f;
+        }
+
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Svasthya Saathi Login</h2>
+        <h3>An app for ASHA workers</h3>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+            <div class="error" id="errorMessage"></div>
+        </form>
+        <div class="footer-links">
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").onsubmit = function (e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const errorDiv = document.getElementById("errorMessage");
+
+            if (username === "asha" && password === "yourpassword") {
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.href = "dashboard.html";
+            } else {
+                errorDiv.textContent = "Invalid username or password!";
+            }
+        }
+    </script>
+</body>
+
+</html>
