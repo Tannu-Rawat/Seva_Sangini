@@ -1,6 +1,7 @@
 /* Main styling */
 body {
-    background-color: #f8f9fa;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
 }
 .navbar {
     background-color: #E53888;
@@ -106,9 +107,6 @@ body {
     color: #adb5bd !important;
 }
 /* Main styling */
-body {
-    background-color: #f8f9fa;
-}
 
 /* Navbar styling */
 .navbar {
