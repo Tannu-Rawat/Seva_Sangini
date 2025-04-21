@@ -3,255 +3,98 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Nutrition - Svasthya Saathi</title>
+    <title>Seva Sangini</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #fafafa;
-            color: #222;
-        }
-
-        /* Header */
-        .header {
-            background: #d8a3cb;
-            color: #ffffff;
-            padding: 13px 24px 11px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header .logo {
-            font-size: 22px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header .logo:before {
-            content: "🛡️";
-            font-size: 19px;
-            margin-right: 7px;
-        }
-
-        .header .lang-user {
-            display: flex;
-            align-items: center;
-            gap: 17px;
-            font-size: 15px;
-        }
-
-        .header .lang-user span:last-child {
-            font-size: 20px;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: #fff;
-            display: flex;
-            border-bottom: 1.5px solid #eee;
-            justify-content: center;
-            padding: 0 0 0 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-link {
-            flex: 1;
-            text-align: center;
-            padding: 18px 0 10px 0;
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
-            border-bottom: 3px solid transparent;
-            transition: border 0.2s, color 0.2s;
-            font-size: 17px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            background: none;
-        }
-
-        .nav-link.active {
-            color: #d8a3cb;
-            border-bottom: 3px solid #d8a3cb;
-            background: #fff;
-        }
-
-        .nav-link span {
-            font-size: 23px;
-            margin-bottom: 2px;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            background: #fff;
-            border-bottom: 1.5px solid #fffefe;
-            margin-bottom: 0;
-            margin-top: 0;
-            padding-left: 0;
-        }
-
-        .tab {
-            flex: 1;
-            text-align: center;
-            padding: 18px 0 10px 0;
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
-            border-bottom: 3px solid transparent;
-            font-size: 17px;
-            background: none;
-            transition: border 0.2s, color 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .tab.active {
-            color: #d8a3cb;
-            border-bottom: 3px solid #d8a3cb;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        h1 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 38px;
-            margin-bottom: 22px;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 12px 16px;
-            font-size: 16px;
-            border-radius: 7px;
-            border: 1px solid #e2e2e2;
-            margin-bottom: 30px;
-            box-sizing: border-box;
-            background: #fff;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-            margin-bottom: 28px;
-            padding: 28px 24px 20px 24px;
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #d8a3cb;
-            margin-bottom: 16px;
-        }
-
-        .card>div {
-            margin-bottom: 16px;
-        }
-
-        .card b {
-            color: #222;
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .card i {
-            color: #999;
-            font-size: 14px;
-        }
-
-        .card ul {
-            margin: 8px 0 8px 18px;
-            padding: 0;
-            color: #444;
-            font-size: 15px;
-        }
-
-        .card li {
-            margin-bottom: 3px;
-        }
-
-        .download-bar {
-            background: #f5e1f0;
-            border-radius: 7px;
-            padding: 12px 0;
-            text-align: center;
-            color: #a35b8f;
-            font-weight: 500;
-            font-size: 15px;
-            margin-top: 18px;
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.15s;
-        }
-
-        .download-bar:hover {
-            background: #d8a3cb;
-            color: #fff;
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                padding: 0 10px;
-            }
-
-            .card {
-                padding: 18px 10px 14px 10px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 0 3px;
-            }
-
-            h1 {
-                font-size: 18px;
-            }
-
-            .card {
-                padding: 12px 5px 10px 5px;
-            }
-
-            .tabs,
-            .navbar {
-                font-size: 15px;
-            }
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Header -->
-    <div class="header">
-        <span class="logo">Svasthya Saathi</span>
-        <span class="lang-user">
-            <span>🌐 EN</span>
-            <span>👤</span>
-        </span>
-    </div>
+    <header class="p-3 mb-3 border-bottom navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between w-100">
+    
+                <!-- Left Side: Logo + Title -->
+                <div class="d-flex align-items-center">
+                    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                        <img src="../images_folder/logo.png" alt="Logo" width="60" height="60" class="me-2">
+                        <span class="fs-4 fw-bold" style="color: white;">Seva Sangini</span>
+                    </a>
+                </div>
+    
+                <!-- Right Side: Translate + Profile -->
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Translate Button -->
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-translate" viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                            <path
+                                d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                        </svg>
+                    </button>
+    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../images_folder/human.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </header>
     <!-- Navbar -->
-    <div class="navbar">
-        <a href="home.html" class="nav-link"><span>🏠</span>Home</a>
-        <a href="assessments.html" class="nav-link"><span>≡</span>Assessments</a>
-        <a href="patients.html" class="nav-link"><span>👥</span>Patients</a>
-        <a href="resources.html" class="nav-link active"><span>📄</span>Resources</a>
-    </div>
+    <nav class="nav nav-tabs bg-white shadow-sm d-flex text-center">
+        <a class="nav-link flex-fill text-dark fw-semibold " href="../dashboard/dashboard.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707z" />
+                    <path
+                        d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018" />
+                </svg></span> Home
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold" href="../tasks/tasks.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bullseye"
+                    viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12" />
+                    <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8" />
+                    <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg></span> Tasks
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold" href="../patients/patients.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                </svg></span> Patients
+        </a>
+        <a class="nav-link flex-fill text-dark fw-semibold active" href="nutrition.html">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-book-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+                </svg></span> Resources
+        </a>
+    </nav>
     <!-- Tabs -->
     <div class="tabs">
         <a href="medicalGuide.html" class="tab">Medical Guidelines</a>
@@ -340,9 +183,7 @@
                     <li>Small fish consumed with bones</li>
                 </ul>
             </div>
-            <div class="download-bar">
-                <span>&#8681;</span> Download Nutrition Chart
-            </div>
+            
         </div>
     </div>
 </body>
