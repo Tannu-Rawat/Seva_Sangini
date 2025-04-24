@@ -1,8 +1,19 @@
+
+html,
 body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #fff;
     font-family: 'Segoe UI', sans-serif;
 }
-
+body {
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .navbar {
     background-color: #E53888;
 }
@@ -78,5 +89,6 @@ body {
 }
 
 footer {
+    margin-top: auto;
     background-color: #E53888;
 }

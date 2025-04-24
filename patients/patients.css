@@ -1,10 +1,18 @@
 /* Main styling */
-body {
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #fff;
     font-family: 'Segoe UI', sans-serif;
 }
 .navbar {
     background-color: #E53888;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar-brand {
@@ -88,10 +96,13 @@ body {
 
 /* Tab styling */
 #patientTabs .nav-link {
+    
+    margin-left: 2rem !important;
     color: #495057;
 }
 
 #patientTabs .nav-link.active {
+   
     color: #E53888;
     border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -106,7 +117,7 @@ body {
 .text-secondary {
     color: #adb5bd !important;
 }
-/* Main styling */
+
 
 /* Navbar styling */
 .navbar {
@@ -192,4 +203,27 @@ body {
 .text-secondary {
     color: #adb5bd !important;
 }
+.thead-pink th {
+    background-color: #E53888 !important;
+    color: #fff !important;
+}
+.btn-pink {
+    background-color: #E53888;
+    color: #fff;
+    border: none;
+}
 
+.btn-pink:hover,
+.btn-pink:focus {
+    background-color: #d82d76;
+    color: #fff;
+}
+.patients-header {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+footer {
+    margin-top: auto;
+    background-color: #E53888;
+}

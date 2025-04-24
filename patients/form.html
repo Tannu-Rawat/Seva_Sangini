@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Patient | Seva Sangini</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="forms.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <header class="p-3 mb-3 border-bottom navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between w-100">
+    
+                <!-- Left Side: Logo + Title -->
+                <div class="d-flex align-items-center">
+                    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                        <img src="../images_folder/logo.png" alt="Logo" width="60" height="60" class="me-2">
+                        <span class="fs-4 fw-bold" style="color: white;">Seva Sangini</span>
+                    </a>
+                </div>
+    
+                <!-- Right Side: Translate + Profile -->
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Translate Button -->
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-translate" viewBox="0 0 16 16">
+                            <path
+                                d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" onclick="alert('Translator launching soon!')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-person-raised-hand" viewBox="0 0 16 16">
+                            <path
+                                d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a1 1 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207" />
+                            <path d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                        </svg>
+                    </button>
+    
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../images_folder/human.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </header>
+    <div class="container my-5">
+        <div class="card shadow">
+            <div class="card-header custom-header">
+                <h4 class="mb-0"><span class="step-indicator">Step 1/3</span> New Patient Entry</h4>
+            </div>
+            <form id="patientForm" class="needs-validation" novalidate>
+                <!-- Step 1: Patient Type -->
+                <div class="card-body step active" data-step="1">
+                    <div class="mb-3">
+                        <label class="form-label">Patient Type</label>
+                        <div class="btn-group w-100">
+                            <button type="button" class="btn btn-outline-primary patient-type" data-type="pregnancy">
+                                Pregnancy Patient
+                            </button>
+                            <button type="button" class="btn btn-outline-primary patient-type" data-type="child">
+                                Child Patient
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Dynamic Form Fields -->
+                <div class="card-body step" data-step="2">
+                    <!-- Pregnancy Fields -->
+                    <div id="pregnancyFields" style="display:none;">
+                        <div class="row g-3">
+                            
+                            
+                            <div class="col-md-6">
+                                <label>Hemoglobin (g/dL)</label>
+                                <input type="number" step="0.1" class="form-control" name="hemoglobin" min="5" max="20"
+                                    required>
+                                <div class="invalid-feedback">Enter a value between 5 and 20.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Blood Pressure</label>
+                                <input type="text" class="form-control" name="bp" placeholder="120/80"
+                                    pattern="^\d{2,3}/\d{2,3}$" required>
+                                <div class="invalid-feedback">Format: 120/80 (systolic/diastolic)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Chronic Diseases</label>
+                                <select class="form-select" name="chronic_disease" required>
+                                    <option value="None">None</option>
+                                    <option value="Diabetes">Diabetes</option>
+                                    <option value="Hypertension">Hypertension</option>
+                                    <option value="Thyroid">Thyroid Disorder</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Previous C-section?</label>
+                                <select class="form-select" name="c_section" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Child Fields -->
+                    <div id="childFields" style="display:none;">
+                        <div class="row g-3">
+                            
+                            <div class="col-md-6">
+                                <label>Birth Weight (kg)</label>
+                                <input type="number" step="0.1" class="form-control" name="birth_weight" min="0.5"
+                                    max="7" required>
+                                <div class="invalid-feedback">Enter a value between 0.5 and 7.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Congenital Conditions</label>
+                                <select class="form-select" name="congenital" required>
+                                    <option value="None">None</option>
+                                    <option value="Heart Defect">Heart Defect</option>
+                                    <option value="Genetic Disorder">Genetic Disorder</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Immunization Status</label>
+                                <select class="form-select" name="immunization" required>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Incomplete">Incomplete</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Common Fields -->
+                    <div class="col-md-6">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="invalid-feedback">Please enter the patient's name.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Age</label>
+                        <input type="number" class="form-control" name="age" min="15" max="50" required>
+                        <div class="invalid-feedback">Enter a valid age (15-50).</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" pattern="^\d{10}$" maxlength="10" required>
+                        <div class="invalid-feedback">Enter a valid 10-digit phone number.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Aadhaar Card Number</label>
+                        <input type="tel" class="form-control" name="adhar" pattern="^\d{12}$" maxlength="12" required>
+                        <div class="invalid-feedback">Enter a valid 12-digit adhar number.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" required>
+                        <div class="invalid-feedback">Please enter the address.</div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <label>Remarks/Notes</label>
+                            <textarea class="form-control" name="comments" rows="2"
+                                placeholder="Any additional observations"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Risk Assessment -->
+                <div class="card-body step" data-step="3">
+                    <div class="alert alert-warning" id="riskAlert">
+                        <h5>Risk Assessment:</h5>
+                        <p class="mb-1"><strong>Status:</strong> <span id="riskStatus" class="badge" style="color: #E53888 ; font-size: large;"></span></p>
+                        <p class="mb-0"><strong>Reasons:</strong> <span id="riskReasons"></span></p>
+                    </div>
+                    <input type="hidden" name="risk_status" value="">
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="card-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary prev-step">Previous</button>
+                    <button type="button" class="btn btn-primary next-step">Next</button>
+                    <button type="submit" class="btn btn-success" style="display:none;">Save Patient</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="form.js"></script>
+
+</body>
+</html>

@@ -1,6 +1,18 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
 body {
     background-color: #fff;
     font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .navbar {
     background-color: #E53888;
@@ -174,5 +186,24 @@ h1 {
 }
 
 footer {
+    margin-top: auto;
     background-color: #E53888;
+}
+.search-bar {
+    width: 100%;
+    font-size: 1.1em;
+    padding: 10px 40px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    background: #fff url('https://cdn-icons-png.flaticon.com/512/622/622669.png') 10px 10px no-repeat;
+    background-size: 22px 22px;
+}
+
+.card {
+    margin-bottom: 24px;
+}
+
+.hidden {
+    display: none !important;
 }

@@ -1,0 +1,81 @@
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    display: none;
+    color: #dc3545;
+}
+
+.is-invalid~.invalid-feedback {
+    display: block;
+}
+body {
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: #E53888;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.btn-outline-primary.patient-type {
+    border-color: #E53888;
+    color: #E53888;
+}
+
+.btn-outline-primary.patient-type:hover,
+.btn-outline-primary.patient-type:focus,
+.btn-outline-primary.patient-type:active,
+.btn-outline-primary.patient-type.active {
+    background-color: #E53888;
+    border-color: #E53888;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(229, 56, 136, 0.5);
+    /* Pink glow on focus */
+}
+
+/* Optional: for 'Next', 'Previous', and 'Save' buttons if you want same theme */
+.btn-primary {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #d82d76;
+    border-color: #d82d76;
+    box-shadow: 0 0 0 0.25rem rgba(229, 56, 136, 0.5);
+}
+
+.btn-success {
+    background-color: #E53888;
+    border-color: #E53888;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    background-color: #d82d76;
+    border-color: #d82d76;
+    box-shadow: 0 0 0 0.25rem rgba(229, 56, 136, 0.5);
+}
+.custom-header {
+    background-color: #E53888 !important;
+    color: white;
+    font-weight: bold;
+}
