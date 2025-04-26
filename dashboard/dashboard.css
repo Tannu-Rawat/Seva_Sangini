@@ -92,3 +92,21 @@ footer {
     margin-top: auto;
     background-color: #E53888;
 }
+/* Custom pink color for translation modal header */
+#translateTipModal .modal-header {
+    background-color: #E53888 !important;
+    color: #fff !important;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+/* Make the close (X) button white for contrast */
+#translateTipModal .modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* Optional: accentuate the modal border with a subtle pink shadow */
+#translateTipModal .modal-content {
+    border-radius: 0.5rem;
+    box-shadow: 0 0 16px 0 #e5388866;
+}

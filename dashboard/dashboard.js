@@ -8,4 +8,8 @@
         function logout() {
             localStorage.removeItem("isLoggedIn");
             window.location.href = "../index.html";
-        }
+}
+function showTranslateTip() {
+    var myModal = new bootstrap.Modal(document.getElementById('translateTipModal'));
+    myModal.show();
+}

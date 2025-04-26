@@ -210,3 +210,8 @@ footer {
 .hidden {
     display: none !important;
 }
+footer {
+    width:100%;
+    margin-top: auto;
+    background-color: #E53888;
+}
