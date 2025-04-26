@@ -1,7 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-import { getFirestore, doc, setDoc, query, collection, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -10,14 +8,7 @@ import {
     signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyAtkeJij_Xi0qeo46IBZxDQXMp2hDtjejY",
     authDomain: "healthcare-9565b.firebaseapp.com",
@@ -28,45 +19,27 @@ const firebaseConfig = {
     measurementId: "G-J9JNCM3GQN"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app)
 const db = getFirestore(app);
+const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-//signup inputs
-const signupName = document.getElementById("signupName");
-const signupEmail = document.getElementById("signupEmail");
-const signupPassword = document.getElementById("signupPassword");
-const signupAshaId = document.getElementById("signupAshaId");
-const signupMobile = document.getElementById("signupMobile");
-const signupDistrict = document.getElementById("signupDistrict");
-const signupState = document.getElementById("signupState");
-const signupPincode = document.getElementById("signupPincode");
-const signupDOB = document.getElementById("signupDOB");
 
-//signin inputs
-const loginEmail = document.getElementById("loginEmail");
-const loginPassword = document.getElementById("loginPassword");
-
-//signup buttons
-const signupButton = document.getElementById("signupButton");
-signupButton.addEventListener("click", async function (event) {
+// SIGN UP
+document.getElementById("signupForm").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const name = signupName.value;
-    const email = signupEmail.value;
-    const password = signupPassword.value;
-    const ashaId = signupAshaId.value;
-    const mobile = signupMobile.value;
-    const district = signupDistrict.value;
-    const state = signupState.value;
-    const pincode = signupPincode.value;
+    const name = document.getElementById("signupName").value;
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const ashaId = document.getElementById("signupAshaId").value;
+    const mobile = document.getElementById("signupMobile").value;
+    const district = document.getElementById("signupDistrict").value;
+    const state = document.getElementById("signupState").value;
+    const pincode = document.getElementById("signupPincode").value;
 
     // Check for ashaId uniqueness
     const q = query(collection(db, "users"), where("ashaId", "==", ashaId));
     const querySnapshot = await getDocs(q);
-
     if (!querySnapshot.empty) {
         alert("Error: ashaId already exists. Please use a unique ashaId.");
         return;
@@ -77,66 +50,85 @@ signupButton.addEventListener("click", async function (event) {
         const user = userCredential.user;
 
         await setDoc(doc(db, "users", user.uid), {
-            name: name,
-            email: email,
-            ashaId: ashaId,
+            name,
+            email,
+            ashaId,
             uid: user.uid,
-            mobile: mobile,
-            district: district,
-            state: state,
-            pincode: pincode,
+            mobile,
+            district,
+            state,
+            pincode,
         });
 
-        alert("Signup successful🎉");
-        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("ashaId", ashaId);
         window.location.href = "dashboard/dashboard.html";
-        console.log("User data saved to Firestore.");
     } catch (error) {
-        console.error("Signup error:", error.message);
         alert("Error: " + error.message);
     }
 });
 
-//signin buttons
-const loginButton = document.getElementById("loginButton");
-loginButton.addEventListener("click", async function (event) {
+// SIGN IN
+document.getElementById("loginForm").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const email = loginEmail.value;
-    const password = loginPassword.value;
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log("User logged in:", user.uid);
-        alert(`Welcome🎉`);
-        localStorage.setItem("isLoggedIn", "true");
+        // Fetch ashaId from Firestore
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+            localStorage.setItem("ashaId", userDoc.data().ashaId);
+        }
         window.location.href = "dashboard/dashboard.html";
     } catch (error) {
-        console.error("Login error:", error.message);
         alert("Error: " + error.message);
     }
 });
 
-//signin with google
-document.addEventListener("DOMContentLoaded", () => {
-    // Google login
-    const googleBtn = document.querySelector(".google-login");
-    if (googleBtn) {
-        googleBtn.addEventListener("click", () => {
-            console.log("Google button clicked");
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    alert(`Welcome, ${user.displayName}! 🎉`);
-                    localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = "dashboard/dashboard.html";
-                })
-                .catch((error) => {
-                    console.error("Google sign-in error:", error.message);
-                    alert("Google sign-in failed 😢");
-                });
-        });
+// GOOGLE SIGN IN
+document.querySelector(".google-login").addEventListener("click", async (event) => {
+    event.preventDefault();
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        // Check if user exists in Firestore
+        const userDocRef = doc(db, "users", user.uid);
+        let userDoc = await getDoc(userDocRef);
+        if (!userDoc.exists()) {
+            // Create a new user doc with a generated ashaId
+            const ashaId = "G-" + user.uid.substring(0, 8);
+            await setDoc(userDocRef, {
+                name: user.displayName,
+                email: user.email,
+                ashaId,
+                uid: user.uid,
+            });
+            localStorage.setItem("ashaId", ashaId);
+        } else {
+            localStorage.setItem("ashaId", userDoc.data().ashaId);
+        }
+        window.location.href = "dashboard/dashboard.html";
+    } catch (error) {
+        alert("Google sign-in failed: " + error.message);
     }
 });
+
+// PANEL TOGGLE (optional, for overlay animation)
+document.getElementById('signUp').addEventListener('click', () => {
+    document.getElementById('container').classList.add("right-panel-active");
+});
+document.getElementById('signIn').addEventListener('click', () => {
+    document.getElementById('container').classList.remove("right-panel-active");
+});
+document.getElementById('signUp_mobile').addEventListener('click', () => {
+    document.getElementById('container').classList.add("right-panel-active");
+});
+document.getElementById('signIn_mobile').addEventListener('click', () => {
+    document.getElementById('container').classList.remove("right-panel-active");
+});
+
+
 

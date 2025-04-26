@@ -52,7 +52,7 @@
                         </a>
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                             <li><a class="dropdown-item" href="../profile/profile.html" >Profile</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="logout()">Sign out</a></li>
+                            <li><a class="dropdown-item" id = "logoutBtn">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -262,12 +262,15 @@
 
     
     
-    <!-- Scripts -->
-    <script src="dashboard.js"></script>
+    <!-- Firebase SDKs FIRST -->
     
-    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Your custom JS LAST -->
+    <script type="module" src="dashboard.js"></script>
+
+
+
 
 </body>
 

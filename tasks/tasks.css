@@ -43,28 +43,7 @@ body {
     transform: translateY(-3px);
 }
 
-.ai-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #E53888;
-    color: white;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
 
-.ai-button:hover {
-    background-color: #ff1493;
-}
 
 .nav-tabs .nav-link {
     padding: 12px 20px;
@@ -91,4 +70,7 @@ body {
 footer {
     margin-top: auto;
     background-color: #E53888;
+}
+#tasks-section {
+    margin-top: 40px;
 }

@@ -98,53 +98,13 @@
     </nav>
 
     <!-- ASHA Worker Tasks Section -->
-    <div class="container my-5">
-        <h2 class="mb-4 text-center fw-bold">My Tasks</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    
-            <!-- Example Task Card -->
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Follow-up Visit</h5>
-                        <p class="card-text">Visit patient Rekha Devi to monitor blood pressure and medication adherence.
-                        </p>
-                        <p class="text-muted mb-1"><strong>Due:</strong> April 22, 2025</p>
-                        <p class="text-muted"><strong>Status:</strong> <span
-                                class="badge bg-warning text-dark">Pending</span></p>
-                        <button class="btn btn-primary w-100">Mark as Done</button>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Repeat for more tasks -->
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Health Awareness Session</h5>
-                        <p class="card-text">Conduct session on nutrition for pregnant women in village ward 3.</p>
-                        <p class="text-muted mb-1"><strong>Due:</strong> April 25, 2025</p>
-                        <p class="text-muted"><strong>Status:</strong> <span class="badge bg-success">Completed</span></p>
-                        <button class="btn btn-outline-secondary w-100" disabled>Completed</button>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Vaccination Drive</h5>
-                        <p class="card-text">Coordinate and assist with child vaccination at Anganwadi Center.</p>
-                        <p class="text-muted mb-1"><strong>Due:</strong> April 23, 2025</p>
-                        <p class="text-muted"><strong>Status:</strong> <span class="badge bg-danger">Overdue</span></p>
-                        <button class="btn btn-danger w-100">Mark as Done</button>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- You can continue adding more cards dynamically later using backend or JS -->
+    <div id="tasks-section" class="container">
+        <h2 class="mb-4 text-center fw-semibold">My Tasks</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="tasks-row">
+            <!-- Task cards will be inserted here dynamically by JavaScript -->
         </div>
     </div>
+
 
 
 
@@ -170,20 +130,11 @@
 
 
     <!-- Scripts -->
-
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-
-        if (localStorage.getItem("isLoggedIn") !== "true") {
-            window.location.href = "../index.html";
-        }
-
-        // Logout function
-        function logout() {
-            localStorage.removeItem("isLoggedIn");
-            window.location.href = "../index.html";
-        }
-    </script>
+    <Script src="tasks.js"></Script>
+    
 
 </body>
 
