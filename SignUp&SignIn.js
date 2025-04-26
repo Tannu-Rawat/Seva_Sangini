@@ -1,14 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, query, collection, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
-    FacebookAuthProvider
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 
@@ -35,13 +34,16 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app)
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
-const fprovider = new FacebookAuthProvider();
-
 //signup inputs
 const signupName = document.getElementById("signupName");
 const signupEmail = document.getElementById("signupEmail");
 const signupPassword = document.getElementById("signupPassword");
 const signupAshaId = document.getElementById("signupAshaId");
+const signupMobile = document.getElementById("signupMobile");
+const signupDistrict = document.getElementById("signupDistrict");
+const signupState = document.getElementById("signupState");
+const signupPincode = document.getElementById("signupPincode");
+const signupDOB = document.getElementById("signupDOB");
 
 //signin inputs
 const loginEmail = document.getElementById("loginEmail");
@@ -56,28 +58,44 @@ signupButton.addEventListener("click", async function (event) {
     const email = signupEmail.value;
     const password = signupPassword.value;
     const ashaId = signupAshaId.value;
+    const mobile = signupMobile.value;
+    const district = signupDistrict.value;
+    const state = signupState.value;
+    const pincode = signupPincode.value;
+
+    // Check for ashaId uniqueness
+    const q = query(collection(db, "users"), where("ashaId", "==", ashaId));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+        alert("Error: ashaId already exists. Please use a unique ashaId.");
+        return;
+    }
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Save additional info to Firestore
         await setDoc(doc(db, "users", user.uid), {
             name: name,
             email: email,
             ashaId: ashaId,
-            uid: user.uid
+            uid: user.uid,
+            mobile: mobile,
+            district: district,
+            state: state,
+            pincode: pincode,
         });
 
-        alert("Signup successful!");
+        alert("Signup successful🎉");
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "dashboard/dashboard.html";
         console.log("User data saved to Firestore.");
-
     } catch (error) {
         console.error("Signup error:", error.message);
         alert("Error: " + error.message);
     }
 });
-
 
 //signin buttons
 const loginButton = document.getElementById("loginButton");
@@ -90,8 +108,9 @@ loginButton.addEventListener("click", async function (event) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        alert("Login successful!");
         console.log("User logged in:", user.uid);
+        alert(`Welcome🎉`);
+        localStorage.setItem("isLoggedIn", "true");
         window.location.href = "dashboard/dashboard.html";
     } catch (error) {
         console.error("Login error:", error.message);
@@ -116,25 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch((error) => {
                     console.error("Google sign-in error:", error.message);
                     alert("Google sign-in failed 😢");
-                });
-        });
-    }
-
-    // Facebook login
-    const facebookBtn = document.querySelector(".facebook-login");
-    if (facebookBtn) {
-        facebookBtn.addEventListener("click", () => {
-            console.log("Facebook button clicked");
-            signInWithPopup(auth, fprovider)
-                .then((result) => {
-                    const user = result.user;
-                    alert(`Welcome, ${user.displayName}! 🎉`);
-                    localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = "dashboard/dashboard.html";
-                })
-                .catch((error) => {
-                    console.error("Facebook sign-in error:", error.message);
-                    alert("Facebook sign-in failed 😢");
                 });
         });
     }

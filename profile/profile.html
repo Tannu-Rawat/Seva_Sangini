@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASHA Worker Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="profile-fadein">
+    <div class="profile-card">
+      <div class="profile-left">
+        <div class="profile-avatar">
+          <img src="../images_folder/human.png" alt="Profile Picture" id="profile-pic">
+        </div>
+        <div class="profile-name" id="profile-name">Loading...</div>
+        <div class="profile-role">ASHA Worker</div>
+        <button class="edit-profile-btn">Edit Profile</button>
+      </div>
+      <div class="profile-right">
+        <div class="profile-section">
+          <div class="profile-section-title">About Me</div>
+          <div class="profile-about" id="profile-about">
+            Dedicated ASHA worker committed to community health and well-being.
+          </div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-title">Contact Information</div>
+          <ul class="profile-details-list">
+            <li>
+              <span class="profile-details-label">ASHA ID:</span>
+              <span id="profile-ashaid"></span>
+            </li>
+            <li>
+              <span class="profile-details-label">Email:</span>
+              <span id="profile-email"></span>
+            </li>
+            <li>
+              <span class="profile-details-label">Phone:</span>
+              <span id="profile-phone"></span>
+            </li>
+            <li>
+              <span class="profile-details-label">District:</span>
+              <span id="profile-district"></span>
+            </li>
+            <li>
+              <span class="profile-details-label">State:</span>
+              <span id="profile-state"></span>
+            </li>
+            <li>
+              <span class="profile-details-label">Pin Code:</span>
+              <span id="profile-pin"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="profile.js"></script>
+</body>
+</html>

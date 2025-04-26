@@ -242,6 +242,24 @@
         width: 40px;
     }
 
+    .signup-fields-scroll {
+        max-height: 45vh;
+        /* Adjust as needed */
+        overflow-y: auto;
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup-fields-scroll input,
+    .signup-fields-scroll button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+
     .social:hover {
         background-color: #E53888;
         color: #fff;
@@ -285,10 +303,19 @@
         .form-container h1 {
             font-size: 1.1rem;
             font-weight: 700;
+            width: 100vw;
+            min-width: unset;
+        }
+
+        .signup-fields-scroll input,
+        .signup-fields-scroll button {
+            max-width: 98vw;
         }
 
         .container {
             overflow: auto;
+            width: 100vw;
+            min-width: unset;
         }
 
         .overlay-container {
@@ -320,12 +347,16 @@
 
         }
 
-
-
         #mobile_para {
             display: block;
         }
 
+    }
+
+    .sign-up-container form {
+        max-height: 70vh;
+        overflow-y: auto;
+        padding-right: 8px;
     }
 </style>
 
@@ -344,14 +375,22 @@
                         <a href="#" class="social"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" id="signupName" />
-                    <input type="email" placeholder="Email" id="signupEmail" />
-                    <input type="password" placeholder="Password" id="signupPassword" />
-                    <input type="text" placeholder="ASHA Worker ID" id="signupAshaId" />
-                    <button id="signupButton" type="submit">Sign Up</button>
-                    <p id="mobile_para">To keep connected with us, please login</p>
-                    <button class="ghost_mobile" id="signIn_mobile" type="button">Sign In</button>
+
+                    <div class="signup-fields-scroll">
+                        <input type="text" placeholder="Name" id="signupName" />
+                        <input type="email" placeholder="Email" id="signupEmail" />
+                        <input type="password" placeholder="Password" id="signupPassword" />
+                        <input type="text" placeholder="ASHA Worker ID" id="signupAshaId" />
+                        <input type="text" placeholder="Mobile Number" id="signupMobile" />
+                        <input type="text" placeholder="District" id="signupDistrict" />
+                        <input type="text" placeholder="State" id="signupState" />
+                        <input type="text" placeholder="Pincode" id="signupPincode" />
+                        <button id="signupButton" type="submit">Sign Up</button>
+                        <p id="mobile_para">To keep connected with us, please login</p>
+                        <button class="ghost_mobile" id="signIn_mobile" type="button">Sign In</button>
+                    </div>
                 </form>
+
             </div>
             <div class="form-container sign-in-container">
                 <form id="loginForm" action="#">
