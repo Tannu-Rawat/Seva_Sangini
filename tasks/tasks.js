@@ -60,16 +60,35 @@ function loadTasks() {
     .then(snapshot => {
       if (snapshot.empty) {
         tasksRow.innerHTML = '<div class="col"><div class="alert alert-info">No tasks found.</div></div>';
+        localStorage.removeItem('pendingTasks'); // Clear if none
         return;
       }
       let html = '';
+      let pendingTasks = [];
       snapshot.forEach(doc => {
-        html += renderTaskCard(doc.id, doc.data());
+        const data = doc.data();
+        if (data.status === 'pending') {
+          pendingTasks.push({ id: doc.id, ...data });
+        }
+        html += renderTaskCard(doc.id, data);
       });
       tasksRow.innerHTML = html;
+      // Store pending tasks locally
+      localStorage.setItem('pendingTasks', JSON.stringify(pendingTasks));
     })
     .catch(error => {
-      tasksRow.innerHTML = `<div class="col"><div class="alert alert-danger">Error loading tasks: ${error.message}</div></div>`;
+      // Try to load from localStorage if Firestore fails
+      const local = localStorage.getItem('pendingTasks');
+      if (local) {
+        const pendingTasks = JSON.parse(local);
+        let html = '';
+        pendingTasks.forEach(task => {
+          html += renderTaskCard(task.id, task);
+        });
+        tasksRow.innerHTML = html + '<div class="col"><div class="alert alert-warning">Loaded from local storage due to error: ' + error.message + '</div></div>';
+      } else {
+        tasksRow.innerHTML = `<div class="col"><div class="alert alert-danger">Error loading tasks: ${error.message}</div></div>`;
+      }
     });
 }
 

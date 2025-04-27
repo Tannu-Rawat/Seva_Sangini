@@ -1,12 +1,4 @@
-if (localStorage.getItem("isLoggedIn") !== "true") {
-            window.location.href = "../index.html";
-        }
 
-        // Logout function
-        function logout() {
-            localStorage.removeItem("isLoggedIn");
-            window.location.href = "../index.html";
-}
 const firebaseConfig = {
     apiKey: "AIzaSyANabSYGVWjrHU1wou5g_gMeIYw67I7Ejg",
     authDomain: "sakhicare-b4e84.firebaseapp.com",
@@ -32,25 +24,28 @@ const firebaseConfig = {
 
   // Fetch and render patients
   function renderPatients() {
-    db.collection("seva sangini").get().then(snapshot => {
-      const all = [];
-      const pregnancy = [];
-      const child = [];
-      const highRisk = [];
-      snapshot.forEach(doc => {
-        const p = doc.data();
-        p.id = doc.id;
-        all.push(p);
-        if (p["patient-type"] === "pregnancy") pregnancy.push(p);
-        if (p["patient-type"] === "child") child.push(p);
-        if (p.risk_status && String(p.risk_status).toLowerCase().includes("high")) highRisk.push(p);
-      });
-      fillTable("allPatientsTableBody", all);
-      fillTable("pregnancyPatientsTableBody", pregnancy);
-      fillTable("childPatientsTableBody", child);
-      fillTable("highRiskPatientsTableBody", highRisk);
+  db.collection("seva sangini").get().then(snapshot => {
+    const all = [];
+    const pregnancy = [];
+    const child = [];
+    const highRisk = [];
+    snapshot.forEach(doc => {
+      const p = doc.data();
+      p.id = doc.id;
+      all.push(p);
+      if (p["patient-type"] === "pregnancy") pregnancy.push(p);
+      if (p["patient-type"] === "child") child.push(p);
+      if (p.risk_status && String(p.risk_status).toLowerCase().includes("high")) highRisk.push(p);
     });
-  }
+    // Store high-risk patient count locally
+    localStorage.setItem('highRiskCount', highRisk.length);
+    fillTable("allPatientsTableBody", all);
+    fillTable("pregnancyPatientsTableBody", pregnancy);
+    fillTable("childPatientsTableBody", child);
+    fillTable("highRiskPatientsTableBody", highRisk);
+  });
+}
+
 
   // Fill a table with all fields
   function fillTable(tbodyId, patients) {

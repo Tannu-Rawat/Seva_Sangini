@@ -43,6 +43,21 @@ window.showTranslateTip = function() {
     var myModal = new bootstrap.Modal(document.getElementById('translateTipModal'));
     myModal.show();
 };
+// Get today's date in YYYY-MM-DD format
+document.addEventListener('DOMContentLoaded', function() {
+    // Get pendingTasks from localStorage (default to empty array if not set)
+    const pendingTasks = JSON.parse(localStorage.getItem('pendingTasks')) || [];
+    // Show the count in the h2
+    document.getElementById('todays-visits-count').textContent = pendingTasks.length;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const highRiskCount = localStorage.getItem('highRiskCount') || 0;
+    document.getElementById('needs-attention-count').textContent = highRiskCount;
+});
+
+ 
+
 
 
 

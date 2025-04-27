@@ -211,7 +211,11 @@ footer {
     display: none !important;
 }
 footer {
-    width:100%;
-    margin-top: auto;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background-color: #E53888;
 }
